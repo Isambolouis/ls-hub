@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nid d'Innovateur</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              50:  '#fdf9ee',
+              100: '#f7edcc',
+              200: '#edd896',
+              300: '#e0bc5a',
+              400: '#d4a43a',
+              500: '#b8891f',
+              600: '#956b17',
+              700: '#704f13',
+              800: '#4e3710',
+              900: '#32220a',
+            },
+            nest: {
+              50:  '#faf6f0',
+              100: '#f2e8d8',
+              200: '#e4cdb0',
+              300: '#d0aa7e',
+              400: '#bc8a52',
+              500: '#a87038',
+              600: '#8a5a2c',
+              700: '#6b4322',
+              800: '#4d301a',
+              900: '#301e10',
+            }
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'Georgia', 'serif'],
+            body: ['DM Sans', 'sans-serif'],
+          },
+          boxShadow: {
+            'gold': '0 8px 40px rgba(180, 130, 30, 0.18)',
+            'gold-lg': '0 20px 60px rgba(180, 130, 30, 0.22)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #faf6f0 0%, #f2e8d5 40%, #ede0c4 100%);
+      min-height: 100vh;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    .glass-nav {
+      background: rgba(253, 249, 238, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(212, 164, 58, 0.18);
+    }
+
+    .btn-login {
+      background: linear-gradient(135deg, #d4a43a 0%, #b8891f 100%);
+      box-shadow: 0 4px 18px rgba(180, 130, 30, 0.30);
+      transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 0.04em;
+    }
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(180, 130, 30, 0.42);
+      background: linear-gradient(135deg, #e0bc5a 0%, #c49625 100%);
+    }
+    .btn-login:active {
+      transform: translateY(0);
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(135deg, #4e3710 0%, #956b17 45%, #d4a43a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+
+    .card-nest {
+      background: linear-gradient(160deg, #fdf8ef 0%, #f5ecd6 60%, #ecdbb8 100%);
+      border: 1px solid rgba(212, 164, 58, 0.22);
+      box-shadow: 0 8px 40px rgba(180, 130, 30, 0.13), 0 2px 8px rgba(0,0,0,0.04);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+    .card-nest:hover {
+      transform: translateY(-6px) scale(1.012);
+      box-shadow: 0 24px 64px rgba(180, 130, 30, 0.22), 0 4px 16px rgba(0,0,0,0.07);
+      border-color: rgba(212, 164, 58, 0.45);
+    }
+
+    .card-img-wrapper {
+      overflow: hidden;
+      border-radius: 0.75rem 0.75rem 0 0;
+    }
+    .card-img-wrapper img {
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-nest:hover .card-img-wrapper img {
+      transform: scale(1.06);
+    }
+
+    .btn-visit {
+      background: linear-gradient(135deg, #d4a43a 0%, #956b17 100%);
+      box-shadow: 0 3px 14px rgba(180, 130, 30, 0.28);
+      transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 0.06em;
+    }
+    .btn-visit:hover {
+      background: linear-gradient(135deg, #e0bc5a 0%, #b8891f 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 7px 22px rgba(180, 130, 30, 0.38);
+    }
+    .btn-visit:active {
+      transform: translateY(0);
+    }
+
+    .divider-ornament {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0 auto;
+    }
+    .divider-ornament::before,
+    .divider-ornament::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 164, 58, 0.5), transparent);
+    }
+
+    .tag-badge {
+      background: rgba(212, 164, 58, 0.12);
+      border: 1px solid rgba(212, 164, 58, 0.3);
+      color: #8a5a2c;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up { animation: fadeUp 0.7s ease both; }
+    .delay-100 { animation-delay: 0.10s; }
+    .delay-200 { animation-delay: 0.20s; }
+    .delay-300 { animation-delay: 0.30s; }
+    .delay-400 { animation-delay: 0.40s; }
+    .delay-500 { animation-delay: 0.50s; }
+  </style>
+</head>
+<body class="relative overflow-x-hidden">
+
+  <!-- ───── NAVBAR ───── -->
+  <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+
+      <!-- Logo -->
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center shadow-md">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <ellipse cx="10" cy="13" rx="7" ry="4" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="10" cy="8" r="4" fill="white" opacity="0.9"/>
+            <circle cx="10" cy="8" r="2" fill="#d4a43a"/>
+          </svg>
+        </div>
+        <span class="font-display font-bold text-nest-800 text-base hidden sm:block tracking-wide">NidInn</span>
+      </div>
+
+      <!-- Nav links (desktop) -->
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-nest-700">
+        <a href="#" class="hover:text-gold-600 transition-colors">Accueil</a>
+        <a href="#" class="hover:text-gold-600 transition-colors">À propos</a>
+        <a href="#" class="hover:text-gold-600 transition-colors">Projets</a>
+        <a href="#" class="hover:text-gold-600 transition-colors">Contact</a>
+      </div>
+
+      <!-- Login button -->
+      <button class="btn-login text-white text-sm font-semibold px-5 py-2.5 rounded-full flex items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 3h6v18h-6M10 17l5-5-5-5M13 12H3"/>
+        </svg>
+        <span>Connexion</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ───── HERO ───── -->
+  <main class="relative z-10 pt-28 pb-10 px-5 sm:px-8 max-w-6xl mx-auto">
+
+    <!-- Decorative blobs -->
+    <div class="absolute top-24 -left-20 w-72 h-72 bg-gold-200 rounded-full blur-3xl opacity-30 pointer-events-none"></div>
+    <div class="absolute top-40 -right-16 w-56 h-56 bg-nest-200 rounded-full blur-3xl opacity-25 pointer-events-none"></div>
+
+    <!-- Title block -->
+    <div class="text-center mb-4 animate-fade-up">
+      <span class="tag-badge text-xs font-semibold uppercase px-3 py-1 rounded-full inline-block mb-5 tracking-widest animate-fade-up delay-100">
+        ✦ Communauté & Innovation
+      </span>
+
+      <h1 class="hero-title text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 animate-fade-up delay-200">
+        Nid d'Innovateur
+      </h1>
+
+      <div class="divider-ornament max-w-xs sm:max-w-sm mx-auto mb-6 animate-fade-up delay-300">
+        <span class="text-gold-400 text-lg">✦</span>
+      </div>
+
+      <p class="text-nest-600 text-base sm:text-lg max-w-xl mx-auto leading-relaxed font-light animate-fade-up delay-400">
+        Un espace où les idées éclosent, où les projets prennent leur envol et où chaque visionnaire trouve sa place.
+      </p>
+    </div>
+
+    <!-- ───── CARDS ───── -->
+    <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 gap-7 lg:gap-10 max-w-3xl mx-auto animate-fade-up delay-500">
+
+      <!-- Card 1 — Nid d'Innovateurs (with image) -->
+      <div class="card-nest rounded-2xl flex flex-col">
+        <div class="card-img-wrapper h-56 sm:h-64">
+          <img
+            src="./img.jpeg"
+            alt="Nid d'Innovateurs"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-gold-400 inline-block"></span>
+            <span class="text-xs text-nest-500 font-medium uppercase tracking-widest">Espace phare</span>
+          </div>
+          <h2 class="font-display font-bold text-nest-900 text-xl sm:text-2xl mb-2 leading-tight">
+            Un Nid d'Innovateurs
+          </h2>
+          <p class="text-nest-600 text-sm leading-relaxed flex-1 mb-5">
+            Rejoignez un écosystème vivant où chaque idée dorée trouve son terreau. Incubez, créez, et faites éclore vos projets les plus ambitieux.
+          </p>
+          <button class="btn-visit w-full text-white text-sm font-semibold py-3 rounded-xl flex items-center justify-center gap-2">
+            <span>Visiter</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 2 — L'Atelier des Projets -->
+      <div class="card-nest rounded-2xl flex flex-col">
+        <!-- Placeholder visual -->
+        <div class="h-56 sm:h-64 bg-gradient-to-br from-gold-200 via-nest-200 to-gold-300 flex items-center justify-center relative overflow-hidden rounded-t-2xl">
+          <!-- Decorative circles -->
+          <div class="absolute w-40 h-40 rounded-full bg-gold-300 opacity-40 -top-10 -right-10"></div>
+          <div class="absolute w-24 h-24 rounded-full bg-nest-300 opacity-30 bottom-4 left-6"></div>
+          <div class="relative flex flex-col items-center gap-2 text-nest-700">
+            <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+              <circle cx="26" cy="26" r="25" fill="rgba(212,164,58,0.15)" stroke="rgba(212,164,58,0.4)" stroke-width="1.5"/>
+              <path d="M26 14v14l8 8" stroke="#956b17" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="26" cy="26" r="3" fill="#d4a43a"/>
+            </svg>
+            <span class="text-sm font-semibold text-nest-700 opacity-70">Bientôt disponible</span>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-nest-400 inline-block"></span>
+            <span class="text-xs text-nest-500 font-medium uppercase tracking-widest">En construction</span>
+          </div>
+          <h2 class="font-display font-bold text-nest-900 text-xl sm:text-2xl mb-2 leading-tight">
+            L'Atelier des Projets
+          </h2>
+          <p class="text-nest-600 text-sm leading-relaxed flex-1 mb-5">
+            Un laboratoire collaboratif pour construire, tester et lancer vos idées innovantes. Entourez-vous des meilleurs esprits créatifs.
+          </p>
+          <button class="btn-visit w-full text-white text-sm font-semibold py-3 rounded-xl flex items-center justify-center gap-2">
+            <span>Visiter</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer note -->
+    <p class="text-center text-nest-400 text-xs mt-14 mb-4 font-light tracking-wide animate-fade-up delay-500">
+      © 2026 Nid d'Innovateur — Tous droits réservés
+    </p>
+  </main>
+
+</body>
+</html>
